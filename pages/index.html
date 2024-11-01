@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мои проекты</title>
+    <style>
+        /* Основные стили */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        h1 {
+            text-align: center;
+            padding: 20px;
+            font-size: 2rem;
+            color: #333;
+            background-color: #f4f4f4;
+            border-bottom: 1px solid #ddd;
+        }
+
+        /* Стили списка проектов */
+        .project-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .project {
+            background: #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+
+        .project:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Ссылка заполняет всю плитку */
+        .project a {
+            display: block;
+            padding: 20px;
+            color: #333;
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-align: center;
+            text-decoration: none;
+            height: 100%;
+            width: 100%;
+        }
+
+        .project a:hover {
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Мои проекты</h1>
+        <div class="project-list" id="projectList">
+            <div class="project"><a href="project1.html">Проект 1</a></div>
+            <div class="project"><a href="project2.html">Проект 2</a></div>
+            <div class="project"><a href="project3.html">Проект 3</a></div>
+            <div class="project"><a href="project4.html">Проект 4</a></div>
+            <div class="project"><a href="project5.html">Проект 5</a></div>
+
+        </div>
+    </div>
+
+    <!-- JavaScript для анимации появления элементов -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const projects = document.querySelectorAll(".project");
+            projects.forEach((project, index) => {
+                project.classList.add("fade-in");
+                setTimeout(() => {
+                    project.style.opacity = 1;
+                    project.style.transform = "translateY(0)";
+                }, index * 100);
+            });
+        });
+    </script>
+</body>
+</html>
