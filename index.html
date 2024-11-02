@@ -3,8 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мои проекты</title>
+    <title>Memsito Projects</title>
     <style>
+        @font-face {
+            font-family: Bips; /* Гарнитура шрифта */
+            src: local(bips), url(fonts/BIPs.ttf);
+            }
+
         /* Основные стили */
         * {
             margin: 0;
@@ -13,32 +18,62 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(to right, #6a11cb, #2575fc);
+            font-family: 'Bips', bips;
+            background-color: #1c1c1c;
             color: #333;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             padding: 20px;
         }
 
+        .navbar {
+            background-color: #333;
+            width: 100%;
+            padding: 10px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .navbar ul {
+            list-style-type: none;
+            display: flex;
+            justify-content: center;
+        }
+
+        .navbar li {
+            margin: 0 15px;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+
         .container {
             max-width: 800px;
             width: 100%;
-            background-color: #fff;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898;
             border-radius: 10px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
             overflow: hidden;
+            margin-top: 60px; /* Отступ, чтобы не перекрывать контент навигацией */
         }
 
         h1 {
             text-align: center;
             padding: 20px;
             font-size: 2rem;
-            color: #333;
-            background-color: #f4f4f4;
-            border-bottom: 1px solid #ddd;
+
         }
 
         /* Стили списка проектов */
@@ -50,7 +85,7 @@
         }
 
         .project {
-            background: #e0e0e0;
+            background-color: black;
             border-radius: 8px;
             overflow: hidden;
             transition: transform 0.3s, box-shadow 0.3s;
@@ -66,7 +101,6 @@
         .project a {
             display: block;
             padding: 20px;
-            color: #333;
             font-weight: bold;
             font-size: 1.2rem;
             text-align: center;
@@ -76,35 +110,60 @@
         }
 
         .project a:hover {
-            color: #007bff;
+            background-image: linear-gradient(to top, #000000, #444444);
+        }
+
+        .text_color {
+            background: radial-gradient(666px at 0.4% 48%, rgb(202, 204, 227) 0%, rgb(89, 89, 99) 97.5%);
+            color: transparent;
+            background-clip: text;
+            -webkit-background-clip: text;
+        }
+
+        .heading {
+            background-color: black;
+            border-bottom: 1px solid #ddd;
+        }
+        .navbar_logos{
+            height: 50px;
+            width: 50px;
+        }
+        .navbar_logos:hover{
+            height: 60px;
+            width: 60px;
+        }
+
+        #subheading {
+            background: linear-gradient(to right, #434343 ,black);
+            text-align: center;
+            font-size: 1.5rem;
+            padding: 20px;
+            color: #444;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Мои проекты</h1>
-        <div class="project-list" id="projectList">
-            <div class="project"><a href="pages/project1.html">Проект 1</a></div>
-            <div class="project"><a href="project2.html">Проект 2</a></div>
-            <div class="project"><a href="project3.html">Проект 3</a></div>
-            <div class="project"><a href="project4.html">Проект 4</a></div>
-            <div class="project"><a href="project5.html">Проект 5</a></div>
+    <nav class="navbar">
+        <ul>
+            <li><a href="https://github.com/MEMSITO?tab=repositories"><img class="navbar_logos" src="logos/github.svg"/></a></li>
+            <li><a href="https://steamcommunity.com/id/MEMSito/?l=korean"><img class="navbar_logos" src="logos/steam.svg"/></a></li>
+        </ul>
+    </nav>
 
+    <div class="container">
+        <div class="heading"><h1 class="text_color">Мои проекты</h1></div>
+        <div id="subheading"><h1 class="text_color">Моды на Minecraft</h1></div>
+        <div class="project-list" id="projectList">
+            <div class="project"><a class="text_color" href="pages/minecraft/project1.html">FolkCat</a></div>
+            <div class="project"><a class="text_color" href="project2.html">Проект 2</a></div>
+        </div>
+        <div id="subheading"><h1 class="text_color">Моды на Unturned</h1></div>
+        <div class="project-list" id="projectList">
+            <div class="project"><a class="text_color" href="pages/unturned/project1.html">Music For The Soul</a></div>
+            <div class="project"><a class="text_color" href="project2.html">Проект 2</a></div>
+            <div class="project"><a class="text_color" href="project3.html">Проект 3</a></div>
         </div>
     </div>
 
-    <!-- JavaScript для анимации появления элементов -->
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const projects = document.querySelectorAll(".project");
-            projects.forEach((project, index) => {
-                project.classList.add("fade-in");
-                setTimeout(() => {
-                    project.style.opacity = 1;
-                    project.style.transform = "translateY(0)";
-                }, index * 100);
-            });
-        });
-    </script>
 </body>
 </html>
