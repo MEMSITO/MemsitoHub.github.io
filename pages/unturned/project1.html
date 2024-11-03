@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Music For The Soul</title>
     <style>
+        @font-face {
+            font-family: Bips; /* Гарнитура шрифта */
+            src: local(bips), url(../../fonts/BIPs.ttf);
+        }
+
         /* Основные стили */
         * {
             margin: 0;
@@ -13,9 +18,8 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(to right, #6a11cb, #2575fc);
-            color: #333;
+            font-family: 'Bips', bips;
+            background-color: #1c1c1c;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -23,22 +27,22 @@
             padding: 20px;
         }
 
+
+
         .container {
             max-width: 800px;
             width: 100%;
-            background-color: #fff;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898;
             border-radius: 10px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
             overflow: hidden;
-            padding: 20px;
+            margin-top: 60px; /* Отступ, чтобы не перекрывать контент навигацией */
         }
 
         h1 {
             text-align: center;
             padding: 20px;
             font-size: 2rem;
-            color: #333;
-            background-color: #f4f4f4;
             border-bottom: 1px solid #ddd;
         }
 
@@ -49,9 +53,11 @@
             line-height: 1.6;
         }
 
-        /* Витрина с медиа */
         .showcase {
-            margin: 20px 0;
+            width: 95%;
+            margin-top: 20px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .showcase video {
@@ -60,7 +66,6 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             margin-bottom: 20px;
         }
-
         .gallery {
             display: flex;
             gap: 10px;
@@ -96,7 +101,7 @@
 
         .modal-content {
             display: block;
-            margin: auto;
+            margin: 5% auto;
             max-width: 90%;
             max-height: 90%;
             border-radius: 8px;
@@ -105,7 +110,7 @@
 
         .close {
             position: absolute;
-            top: 20px;
+            top: 100px;
             right: 35px;
             color: #ffffff;
             font-size: 40px;
@@ -118,28 +123,38 @@
         .close:focus {
             color: #bbb;
         }
-
+        .button-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
         /* Кнопки */
         .buttons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 30px;
+            background-color: black;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
         }
 
         .buttons a {
-            padding: 10px 20px;
-            font-size: 1rem;
+            display: block;
+            padding: 20px;
             font-weight: bold;
-            color: #fff;
-            background-color: #007bff;
+            font-size: 1.2rem;
+            text-align: center;
             text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s;
+            height: 100%;
+            width: 100%;
         }
 
+        .buttons:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
         .buttons a:hover {
-            background-color: #0056b3;
+            background-image: linear-gradient(to top, #000000, #444444);
         }
 
         /* Ссылка "Назад к проектам" */
@@ -153,24 +168,84 @@
             transition: color 0.3s;
         }
 
-        .back-link:hover {
-            color: #0056b3;
+        .navbar {
+            background-color: #333;
+            width: 100%;
+            padding: 10px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
         }
+
+        .navbar ul {
+            list-style-type: none;
+            display: flex;
+            justify-content: center;
+        }
+
+        .navbar li {
+            margin: 0 15px;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+
+        .navbar_logos{
+            height: 50px;
+            width: 50px;
+        }
+        .navbar_logos:hover{
+            height: 60px;
+            width: 60px;
+        }
+
         #disqus_thread{
             margin-top: 20px;
             padding: 20px;
         }
+        #disqus_thread a{
+            color: grey;
+        }
+
+        .text_color {
+            background: radial-gradient(666px at 0.4% 48%, rgb(202, 204, 227) 0%, rgb(89, 89, 99) 97.5%);
+            color: transparent;
+            background-clip: text;
+            -webkit-background-clip: text;
+        }
+        .heading {
+            background-color: black;
+        }
+        #subheading {
+            background: linear-gradient(to right, #434343 ,black);
+            text-align: center;
+            font-size: 1.5rem;
+            padding: 20px;
+            color: #444;
+        }
     </style>
 </head>
 <body>
+    <nav class="navbar">
+    <ul>
+        <li><a href="../../index.html"><img class="navbar_logos" src="../../logos/go-back.svg"/></a></li>
+        <li><a href="https://github.com/MEMSITO?tab=repositories"><img class="navbar_logos" src="../../logos/github.svg"/></a></li>
+        <li><a href="https://steamcommunity.com/id/MEMSito/?l=korean"><img class="navbar_logos" src="../../logos/steam.svg"/></a></li>
+    </ul>
+    </nav>
     <div class="container">
-        <h1>Music For The Soul</h1>
+        <div class="heading" ><h1 class ="text_color">Music For The Soul</h1></div>
 
-        <div class="content">
-            <p><strong>Music For The Soul</strong> — Мод на unturned, который добавляет музыку в radio. </p>
+        <div id="subheading" class="content text_color">
+            <p class = "text_color"><strong>Music For The Soul</strong> — Мод на unturned, который добавляет музыку в radio. </p>
 
-            <p>Ключевые особенности:</p>
-            <ul>
+            <p class ="text_color">Ключевые особенности:</p>
+            <ul class ="text_color">
                 <li>Много музыки.</li>
                 <li>Более 5000 просмотров и 1400+ скачиваний.</li>
                 <li>Совместима с другими подобными модами и модами, добавляющими кастомные radio.</li>
@@ -197,23 +272,23 @@
             <img class="modal-content" id="modalImage">
         </div>
 
-        <!-- Кнопки для GitHub и загрузки -->
+        <!-- Кнопки перехода в мастерскую стим -->
+        <div class="button-list">
+            <div class="buttons"><a class = "text_color" href="https://steamcommunity.com/sharedfiles/filedetails/?id=2726008236" target="blank">Мод</a></div>
+        </div>
         <div class="buttons">
-            <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2726008236" target="_blank">Мод</a>
+
         </div>
 
-        <!-- Ссылка на главную страницу -->
-        <a href="../../index.html" class="back-link">Назад к списку проектов</a>
-
-        <div id="disqus_thread"></div>
+        <div id="subheading" class ="text_color" ><div id="disqus_thread"><p/></div></div>
         <script>
             /**
             *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
             *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
 
             var disqus_config = function () {
-            this.page.url = "https://memsito.github.io/MemsitoHub.github.io/pages/unturned/project1.html";  // Replace PAGE_URL with your page's canonical URL variable
-            this.page.identifier = "unturned_project1"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            this.page.url = "https://memsito.github.io/MemsitoHub.github.io/pages/minecraft/project1.html";  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = "minecraft_project1"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
             };
 
             (function() { // DON'T EDIT BELOW THIS LINE
